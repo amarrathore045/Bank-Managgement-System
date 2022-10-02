@@ -12,6 +12,7 @@ public class Home extends JFrame implements ActionListener {
     
     
     Home(String pinNumber){
+        //pin number is the key which is used for primary key
         this.pinNumber = pinNumber;
         setLayout(null);
         
@@ -159,6 +160,8 @@ public class Home extends JFrame implements ActionListener {
     
     public static void main(String[] args){
         new Home("");
+        //creating home page without pin number
+        //therefor you have been logged out
     }
     
 }
