@@ -25,12 +25,16 @@ public class Cons {
             
             //create connection
             c = DriverManager.getConnection("jdbc:mysql:///bankmanagementsystem", "root","password");
+            
+            //create statement for query execution
             s = c.createStatement();
             
             
         }
+        // catch exception here
         catch(Exception e){
-            System.out.println(e);
+            //print execption to console
+            System.out.println("Exception occur named : " + e);
         }
     
     }
