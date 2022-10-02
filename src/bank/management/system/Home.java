@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class Home extends JFrame implements ActionListener {
     
     JButton deposit,cashDraw,fastCash,miniStatement,pinChange,balance,exit;
@@ -125,7 +126,7 @@ public class Home extends JFrame implements ActionListener {
         
     }
     
-    public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent ae){ // To get input from user and take action according to it
         if(ae.getSource() == exit){
             setVisible(false);
             new Login().setVisible(true);

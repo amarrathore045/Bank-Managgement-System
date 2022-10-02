@@ -234,7 +234,7 @@ public class Signup extends JFrame implements ActionListener {
         setVisible(true);
     }
     
-    public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent ae){  // To get input from user and take action according to it
         
         
         if(ae.getSource() == cancel){
