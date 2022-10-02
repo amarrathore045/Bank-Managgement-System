@@ -23,7 +23,7 @@ public class Signup extends JFrame implements ActionListener {
         
         setLayout(null);
         
-        setTitle("Sign Up,    Page 1 of 2");
+        setTitle("Sign Up,  Page 1 of 2");
         
         Random ran = new Random();
         random = Math.abs((ran.nextLong()%9000L)+1000L);//to get 4 digit application number
@@ -44,7 +44,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel name = new JLabel("Name :" );
+        JLabel name = new JLabel("Name:" );
         name.setFont(new Font("Railway",Font.BOLD,20));
         name.setBounds(120,150,200,30);
         add(name);
@@ -93,7 +93,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel gender = new JLabel("Gender :" );
+        JLabel gender = new JLabel("Gender:" );
         gender.setFont(new Font("Railway",Font.BOLD,20));
         gender.setBounds(120,300,200,30);
         add(gender);
@@ -115,7 +115,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel email = new JLabel("Email :" );
+        JLabel email = new JLabel("Email:" );
         email.setFont(new Font("Railway",Font.BOLD,20));
         email.setBounds(120,350,200,30);
         add(email);
@@ -128,7 +128,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel marital = new JLabel("Marital Status :" );
+        JLabel marital = new JLabel("Marital Status:" );
         marital.setFont(new Font("Railway",Font.BOLD,20));
         marital.setBounds(120,400,200,30);
         add(marital);
@@ -159,7 +159,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel address = new JLabel("Adddress :" );
+        JLabel address = new JLabel("Adddress:" );
         address.setFont(new Font("Railway",Font.BOLD,20));
         address.setBounds(120,450,200,30);
         add(address);
@@ -173,7 +173,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel city = new JLabel("City :" );
+        JLabel city = new JLabel("City:" );
         city.setFont(new Font("Railway",Font.BOLD,20));
         city.setBounds(120,500,200,30);
         add(city);
@@ -187,7 +187,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel state = new JLabel("State :" );
+        JLabel state = new JLabel("State:" );
         state.setFont(new Font("Railway",Font.BOLD,20));
         state.setBounds(120,550,200,30);
         add(state);
@@ -200,7 +200,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        JLabel pincode = new JLabel("Pincode :" );
+        JLabel pincode = new JLabel("Pincode:" );
         pincode.setFont(new Font("Railway",Font.BOLD,20));
         pincode.setBounds(120,600,200,30);
         add(pincode);
@@ -363,11 +363,12 @@ public class Signup extends JFrame implements ActionListener {
             }else if( pin_match == false){
                 JOptionPane.showMessageDialog(null,"Invalid Pincode");
             }
-            
+            //constraints for null values
             else{
                Cons c = new Cons();
                String query = "insert into signup value('"+formno+"'  ,'"+name+"' , '"+fname+"' , '"+dob+"' , '"+gender+"' , '"+email+"' , '"+marital+"' , '"+address+"' , '"+city+"' , '"+pin+"' , '"+state+"')";
-               c.s.executeUpdate(query);
+               //needed a database with required columns.
+                c.s.executeUpdate(query);
                
                
                setVisible(false);
@@ -381,7 +382,7 @@ public class Signup extends JFrame implements ActionListener {
             */
         }
         catch(Exception e){
-            System.out.println(e);
+            System.out.println("Errorr enciuntered - " + e);
         }
         
         
