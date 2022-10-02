@@ -19,8 +19,8 @@ public class Login extends JFrame implements ActionListener{
         
         
         //Title
-        setTitle("Chintu Bank ...."); //set titke of the frame
-        
+        setTitle("Bank ...."); //set titke of the frame
+        //dont use tile like chintu bank for this proect
         
         
         //Image
@@ -30,6 +30,8 @@ public class Login extends JFrame implements ActionListener{
         //we cannot add image to jlevel we can add imageicon in jframe
         ImageIcon i3 = new ImageIcon(i2);
         JLabel label = new JLabel(i3);
+        //image is added on the base layout
+        //therefore, no item is to be added over the image
         
         //now to place the home icon in frame
         label.setBounds(70,20,100,100);//the 4 parameters are the placement of a rectangle
@@ -171,6 +173,7 @@ public class Login extends JFrame implements ActionListener{
                 new Signup().setVisible(true);
             }
             else if(ae.getSource() == exit){
+                ///exit from the app
                 System.exit(0);
             }
             
