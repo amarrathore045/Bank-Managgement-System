@@ -28,7 +28,7 @@ public class Signup extends JFrame implements ActionListener {
         Random ran = new Random();
         random = Math.abs((ran.nextLong()%9000L)+1000L);//to get 4 digit application number
         
-        JLabel formno = new JLabel("Applicaion Form Number :"+ random );
+        JLabel formno = new JLabel("Application Form Number: "+ random );
         formno.setFont(new Font("Railway",Font.BOLD,30));
         formno.setBounds(190,20,600,30);
         add(formno);
