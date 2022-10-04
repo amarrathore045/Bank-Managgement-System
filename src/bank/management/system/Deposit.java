@@ -25,7 +25,7 @@ public class Deposit extends JFrame implements ActionListener {
         JLabel image = new JLabel(i3);
         image.setBounds(0,0,1080,720);
         add(image);
-        
+        //items will be above the image therefore, we have to use image.add for other components
         
         
         JLabel text = new JLabel("Enter amount you want to deposit");
