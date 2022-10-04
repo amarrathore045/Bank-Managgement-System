@@ -1,4 +1,4 @@
-
+//Withdraw 
 package bank.management.system;
 
 import javax.swing.*;
@@ -73,7 +73,7 @@ public class Withdraw extends JFrame implements ActionListener {
         setVisible(true);
         
     }
-    
+    //Action listener implementation
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == withdraw){
             setVisible(false);
@@ -131,7 +131,7 @@ public class Withdraw extends JFrame implements ActionListener {
     }
     
     
-    
+    //main class
     public static void main(String args[]){
         new Withdraw("");
     }
