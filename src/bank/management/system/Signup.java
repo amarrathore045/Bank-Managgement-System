@@ -1,3 +1,4 @@
+//Signup page
 
 package bank.management.system;
 
@@ -67,7 +68,7 @@ public class Signup extends JFrame implements ActionListener {
         
         
         
-        
+        //DOB
         
         JLabel dobText = new JLabel("Date of Birth :" );
         dobText.setFont(new Font("Railway",Font.BOLD,20));
@@ -82,6 +83,7 @@ public class Signup extends JFrame implements ActionListener {
         dobtext.setBounds(320,250,150,30);
         add(dobtext);
         
+        //Showing selected DOB to the user
         
         dobButton = new JButton("Show DOB");
         dobButton.setBackground(Color.BLACK);
@@ -125,7 +127,7 @@ public class Signup extends JFrame implements ActionListener {
         add(emailText);
         
         
-        
+        //radio buttons are used for marital status
         
         
         JLabel marital = new JLabel("Marital Status :" );
@@ -388,7 +390,7 @@ public class Signup extends JFrame implements ActionListener {
     }
     
     
-    
+    //main class
     public static void main(String args[]){
         new Signup();
         //This will create a new page and logout the current user
