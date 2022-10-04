@@ -142,15 +142,21 @@ public class Login extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){  // To get input from user and take action according to it 
-            
+
             if(ae.getSource() == clear){
                 accnoTextField.setText("");
                 pinTextField.setText("");
             }
+            
             else if(ae.getSource() == login){
+            
                 Cons conn = new Cons();
                 String cardNumber = accnoTextField.getText();
                 String pinNumber = pinTextField.getText();
+                  if(accnoTextField.getText().length()==0)  // Checking for empty Username field
+                       {JOptionPane.showMessageDialog(null, "Empty fields detected ! Please enter your Account No.");}
+                  else if(pinTextField.getPassword().length==0)  // Checking for empty password field
+                       {JOptionPane.showMessageDialog(null, "Empty fields detected ! Please enter your Pin");}
                 String query =  "select * from login where accNumber = '"+cardNumber+"' and pinNumber = '"+pinNumber+"'";
                 try{
                     ResultSet rs = conn.s.executeQuery(query);
