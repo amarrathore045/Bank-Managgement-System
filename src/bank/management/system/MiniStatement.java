@@ -71,6 +71,7 @@ public class MiniStatement extends JFrame{
             
             
         }
+        //catch block for exception handling
         catch(Exception e){
             System.out.println("Error caught - "+e);
             //this will print into the console
