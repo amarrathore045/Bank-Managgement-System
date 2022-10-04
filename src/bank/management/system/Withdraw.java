@@ -18,7 +18,7 @@ public class Withdraw extends JFrame implements ActionListener {
         this.pinNumber = pinNumber;
         
         setLayout(null);
-        
+        //by default layout is boxed so e have to change it befor using setbounds 
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("resources/Deposit.png"));
         Image i2 = i1.getImage().getScaledInstance(1080,720,Image.SCALE_DEFAULT);
@@ -91,6 +91,7 @@ public class Withdraw extends JFrame implements ActionListener {
                 setVisible(false);
                     new Home(pinNumber).setVisible(true);
             }
+            //valid amount will be sent for updation in the database 
             else{
                 try{
                     Cons conn = new Cons();
@@ -116,7 +117,8 @@ public class Withdraw extends JFrame implements ActionListener {
                     new Home(pinNumber).setVisible(true);
                 }
                 catch(Exception e){
-                    System.out.println(e);
+                    System.out.println("Error encountered - "+e);
+                    //This will make user interaction better
                 }
                 
             }
