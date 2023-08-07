@@ -66,7 +66,7 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent ae){
         setVisible(false);
-        new Home(pinNumber).setVisible(true);
+        new Home(pinNumber);
     }
     public static void main(String args[]){
         

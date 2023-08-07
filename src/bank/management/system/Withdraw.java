@@ -89,7 +89,7 @@ public class Withdraw extends JFrame implements ActionListener {
             if(number.equals("") || deposit_match == false ){
                 JOptionPane.showMessageDialog(null,"Invalid Amount");
                 setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
             }
             //valid amount will be sent for updation in the database 
             else{
@@ -107,14 +107,14 @@ public class Withdraw extends JFrame implements ActionListener {
                     if(ae.getSource()!= back && left < Integer.parseInt(number)){
                     JOptionPane.showMessageDialog(null,"Insufficient Balance");
                     setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                     return;
                     }
                     String query = "insert into bank values('"+pinNumber+"','"+date+"','Withdrawl','"+number+"')";
                     conn.s.executeUpdate(query);
                     JOptionPane.showMessageDialog(null, "Rs " + number + " Withdraw Successfully");
                     setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                 }
                 catch(Exception e){
                     System.out.println("Error encountered - "+e);
@@ -126,7 +126,7 @@ public class Withdraw extends JFrame implements ActionListener {
         }
         else if(ae.getSource() == back){
             setVisible(false);
-            new Home(pinNumber).setVisible(true);
+            new Home(pinNumber);
         }
     }
     

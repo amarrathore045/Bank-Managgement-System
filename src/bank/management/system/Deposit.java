@@ -99,7 +99,7 @@ public class Deposit extends JFrame implements ActionListener {
                     conn.s.executeUpdate(query);
                     JOptionPane.showMessageDialog(null, "Rs " + number + " Deposited Successfully");
                     setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                 }
                 catch(Exception e){
                     System.out.println(e);
@@ -110,7 +110,7 @@ public class Deposit extends JFrame implements ActionListener {
         }
         else if(ae.getSource() == back){
             setVisible(false);
-            new Home(pinNumber).setVisible(true);
+            new Home(pinNumber);
         }
     }
     

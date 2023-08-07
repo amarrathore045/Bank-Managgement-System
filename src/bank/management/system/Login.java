@@ -156,7 +156,7 @@ public class Login extends JFrame implements ActionListener{
                     ResultSet rs = conn.s.executeQuery(query);
                     if(rs.next()){
                         setVisible(false);
-                        new Home(pinNumber).setVisible(true);
+                        new Home(pinNumber);
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Incorrect Account no. or Pin");
