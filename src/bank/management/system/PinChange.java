@@ -96,7 +96,7 @@ public class PinChange extends JFrame implements ActionListener{
             if(npin.equals("") || deposit_match == false || npin.length()!=4){
                 JOptionPane.showMessageDialog(null,"Invalid Pin. Enter a 4 digit Pin");
                 setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                     return;
             }
             
@@ -104,14 +104,14 @@ public class PinChange extends JFrame implements ActionListener{
             if(npin.equals(rpin)== false){
                 JOptionPane.showMessageDialog(null, "Pin Doesnot Match");
                 setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                     return;
             }
             
             if(rpin.equals("")){
                 JOptionPane.showMessageDialog(null, "Please Confirm the New Pin");
                 setVisible(false);
-                    new Home(pinNumber).setVisible(true);
+                    new Home(pinNumber);
                     return;
             }
             Cons cons= new Cons();
@@ -126,16 +126,15 @@ public class PinChange extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(null, "Pin Changed Successfully");
             setVisible(false);
             
-            new Home(rpin).setVisible(true);
+            new Home(rpin);
+        } catch(Exception e) {
+                System.out.println(e);
+            }
         }
-        catch(Exception e){
-            System.out.println(e);
+        else{
+            setVisible(false);
+            new Home(pinNumber);
         }
-    }
-    else{
-        setVisible(false);
-        new Home(pinNumber).setVisible(true);
-    }
     }
     
     public static void main(String args[]){

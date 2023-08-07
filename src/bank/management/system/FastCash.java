@@ -129,7 +129,7 @@ public class FastCash extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == exit){
             setVisible(false);
-            new Home(pinNumber).setVisible(true);
+            new Home(pinNumber);
         }
         else {
             String amount = ((JButton)ae.getSource()).getText().substring(3);
@@ -153,7 +153,7 @@ public class FastCash extends JFrame implements ActionListener {
                 c.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Rs " +amount+ " Debited Successfully");
                 setVisible(false);
-                new Home(pinNumber).setVisible(true);
+                new Home(pinNumber);
                 
              }
                 

@@ -2,6 +2,9 @@
 
 package bank.management.system;
 
+import bank.management.system.Handlers.fieldEmailHandler;
+import bank.management.system.Handlers.fieldPINHandler;
+import bank.management.system.Handlers.fieldTextHandler;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -279,102 +282,37 @@ public class Signup extends JFrame implements ActionListener {
         String city = cityText.getText();
         String state = stateText.getText();
         String pin = pinText.getText();
-        
-        
+        String email = emailText.getText();
         
         
         try{
-            
-            //checking inputs: here
-            //"^[\\p{L} .'-]+$"    -- Regular Expression to check Name in any Language
-            //"[0-9]{6}+"  -- Regular Expression to check a 6 digit Numeric Value
-            
-            //To Check the Format of Name Field
-            String regex_name = "^[\\p{L} .'-]+$";  // Regular Expression to check the format of the Name
-            Pattern pattern_name =Pattern.compile(regex_name);
-            Matcher match_name= pattern_name.matcher(name); // Mathching the Entered name with the regex
-            boolean name_match= match_name.matches(); // Transfering the result to a boolean variable
-            // Check of name Field Ends Here
-            
-            //To Check the Format of Father's Name Field
-            String regex_fname = "^[\\p{L} .'-]+$";  // Regular Expression to check the format of the f name
-            Pattern pattern_fname =Pattern.compile(regex_fname);
-            Matcher match_fname= pattern_fname.matcher(fname); // Mathching the Entered fname with the regex
-            boolean fname_match= match_fname.matches(); // Transfering the result to a boolean variable
-            // Check of fname Field Ends Here
+            String[] request = {name, fname, state , city , email, pin}; // request que contiene
+            // los datos que queremos validar en cadena.
             
             
-            //To Check the Format of state Field
-            String regex_state = "^[\\p{L} .'-]+$";  // Regular Expression to check the format of the state
-            Pattern pattern_state =Pattern.compile(regex_state);
-            Matcher match_state= pattern_state.matcher(state); // Mathching the Entered state with the regex
-            boolean state_match= match_state.matches(); // Transfering the result to a boolean variable
-            // Check of state Field Ends Here
+            fieldTextHandler nameFieldValidation = new fieldTextHandler(request);
+            nameFieldValidation.setIndex(0); // Aqui inicia la cadena.
+            fieldTextHandler fatherNameFieldValidation = new fieldTextHandler(request);
+            fieldTextHandler stateFieldValidation = new fieldTextHandler(request);
+            fieldTextHandler cityFieldValidation = new fieldTextHandler(request);
+            fieldEmailHandler emailFieldValidation = new fieldEmailHandler(request);
+            fieldPINHandler pinFieldValidation = new fieldPINHandler(request);
             
+            nameFieldValidation.setNext(fatherNameFieldValidation);
+            fatherNameFieldValidation.setNext(stateFieldValidation);
+            stateFieldValidation.setNext(cityFieldValidation);
+            cityFieldValidation.setNext(emailFieldValidation);
+            emailFieldValidation.setNext(pinFieldValidation);
             
-            //To Check the Format of city Field
-            String regex_city = "^[\\p{L} .'-]+$";  // Regular Expression to check the format of the city
-            Pattern pattern_city =Pattern.compile(regex_city);
-            Matcher match_city= pattern_city.matcher(city); // Mathching the Entered city with the regex
-            boolean city_match= match_city.matches(); // Transfering the result to a boolean variable
-            // Check of city Field Ends Here
-            
-            
-             //To Check the Format of Pin Code Field
-            String regex_pin = "[0-9]{6}+";  // Regular Expression to check the format of the pin code i.e, 6 digits only
-            Pattern pattern_pin =Pattern.compile(regex_pin);
-            Matcher match_pin= pattern_pin.matcher(pin); // Mathching the Entered pincode with the regex
-            boolean pin_match= match_pin.matches(); // Transfering the result to a boolean variable
-            // Check of pincode Field Ends Here
-            
-            //To Check the Format of Email Field
-            String email = emailText.getText();
-            String regex_email = "^(.+)@(.+)$";  // Regular Expression to check the format of the email
-            Pattern pattern_email =Pattern.compile(regex_email);
-            Matcher match_email= pattern_email.matcher(email); // Mathching the Entered email with the regex
-            boolean email_match= match_email.matches(); // Transfering the result to a boolean variable
-            // Check of Email Field Ends Here
-            
-            
-            if(name_match == false){
-                JOptionPane.showMessageDialog(null,"Invalid Name");
-            }
-            else if(fname_match == false){
-                JOptionPane.showMessageDialog(null,"Invalid Father's Name");
-            }
-            else if(dob.equals("")){
-                JOptionPane.showMessageDialog(null,"Enter DOB");
-            }
-            else if(gender == null){
-                JOptionPane.showMessageDialog(null,"Select Gender");
-            }
-            else if(email_match == false){
-                JOptionPane.showMessageDialog(null,"Incorrect Email Format");
-            }
-            else if(marital == null){
-                JOptionPane.showMessageDialog(null,"Select a Marital Status");
-            }
-            else if(address.equals("")){
-                JOptionPane.showMessageDialog(null,"Address is Required");
-            }
-            else if(city_match == false){
-                JOptionPane.showMessageDialog(null,"Invalid City");
-            }
-            else if(state_match == false){
-                JOptionPane.showMessageDialog(null,"Invalid State");
-            }else if( pin_match == false){
-                JOptionPane.showMessageDialog(null,"Invalid Pincode");
-            }
-            
-            else{
+            boolean othersValidations = (!dob.equals("")) && gender != null && marital != null && !address.equals("");
+            if(nameFieldValidation.handle(request) && othersValidations){
                Cons c = new Cons();
                String query = "insert into signup value('"+formno+"'  ,'"+name+"' , '"+fname+"' , '"+dob+"' , '"+gender+"' , '"+email+"' , '"+marital+"' , '"+address+"' , '"+city+"' , '"+pin+"' , '"+state+"')";
                c.s.executeUpdate(query);
-               
-               
                setVisible(false);
                new SignupTwo(formno).setVisible(true);
-            
+            } else {
+                 JOptionPane.showMessageDialog(null, "Please complete all fields.");
             }
              /*
             variable here shoulb be treated as string 
